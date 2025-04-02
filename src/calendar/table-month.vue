@@ -41,7 +41,7 @@
 
 <script>
 import { chunk } from '../util/base';
-import IconButton from './icon-button';
+import IconButton from './icon-button.vue';
 import { getLocale } from '../locale';
 import { setYear } from '../util/date';
 
@@ -102,14 +102,14 @@ export default {
     handleIconDoubleLeftClick() {
       this.$emit(
         'changecalendar',
-        setYear(this.calendar, v => v - 1),
+        setYear(this.calendar, (v) => v - 1),
         'last-year'
       );
     },
     handleIconDoubleRightClick() {
       this.$emit(
         'changecalendar',
-        setYear(this.calendar, v => v + 1),
+        setYear(this.calendar, (v) => v + 1),
         'next-year'
       );
     },

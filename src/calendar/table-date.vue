@@ -26,9 +26,7 @@
           v-for="item in yearMonth"
           :key="item.panel"
           type="button"
-          :class="
-            `${prefixClass}-btn ${prefixClass}-btn-text ${prefixClass}-btn-current-${item.panel}`
-          "
+          :class="`${prefixClass}-btn ${prefixClass}-btn-text ${prefixClass}-btn-current-${item.panel}`"
           @click="handlePanelChange(item.panel)"
         >
           {{ item.label }}
@@ -77,7 +75,7 @@
 
 <script>
 import { getWeek, format } from 'date-format-parse';
-import IconButton from './icon-button';
+import IconButton from './icon-button.vue';
 import { chunk } from '../util/base';
 import { getCalendar, setMonth, setYear } from '../util/date';
 import { getLocale } from '../locale';
@@ -186,28 +184,28 @@ export default {
     handleIconLeftClick() {
       this.$emit(
         'changecalendar',
-        setMonth(this.calendar, v => v - 1),
+        setMonth(this.calendar, (v) => v - 1),
         'last-month'
       );
     },
     handleIconRightClick() {
       this.$emit(
         'changecalendar',
-        setMonth(this.calendar, v => v + 1),
+        setMonth(this.calendar, (v) => v + 1),
         'next-month'
       );
     },
     handleIconDoubleLeftClick() {
       this.$emit(
         'changecalendar',
-        setYear(this.calendar, v => v - 1),
+        setYear(this.calendar, (v) => v - 1),
         'last-year'
       );
     },
     handleIconDoubleRightClick() {
       this.$emit(
         'changecalendar',
-        setYear(this.calendar, v => v + 1),
+        setYear(this.calendar, (v) => v + 1),
         'next-year'
       );
     },
@@ -231,7 +229,7 @@ export default {
       }
       const index = target.getAttribute('data-row-col');
       if (index) {
-        const [row, col] = index.split(',').map(v => parseInt(v, 10));
+        const [row, col] = index.split(',').map((v) => parseInt(v, 10));
         const date = this.dates[row][col];
         this.$emit('select', new Date(date));
       }

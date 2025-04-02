@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import IconButton from './icon-button';
+import IconButton from './icon-button.vue';
 import { chunk } from '../util/base';
 import { setYear } from '../util/date';
 
@@ -77,7 +77,7 @@ export default {
       return this.years[0][0];
     },
     lastYear() {
-      const last = arr => arr[arr.length - 1];
+      const last = (arr) => arr[arr.length - 1];
       return last(last(this.years));
     },
   },
@@ -108,14 +108,14 @@ export default {
     handleIconDoubleLeftClick() {
       this.$emit(
         'changecalendar',
-        setYear(this.calendar, v => v - 10),
+        setYear(this.calendar, (v) => v - 10),
         'last-decade'
       );
     },
     handleIconDoubleRightClick() {
       this.$emit(
         'changecalendar',
-        setYear(this.calendar, v => v + 10),
+        setYear(this.calendar, (v) => v + 10),
         'next-decade'
       );
     },
