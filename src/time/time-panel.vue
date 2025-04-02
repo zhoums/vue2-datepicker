@@ -9,6 +9,11 @@
         {{ title }}
       </button>
     </div>
+    <div :class="`${prefixClass}-time-header ${prefixClass}-range-wrapper`">
+      <div :class="`${prefixClass}-time-column`">時</div>
+      <div :class="`${prefixClass}-time-column`">分</div>
+      <div :class="`${prefixClass}-time-column`">秒</div>
+    </div>
     <div :class="`${prefixClass}-time-content`">
       <list-options
         v-if="timePickerOptions"
@@ -39,8 +44,8 @@
 <script>
 import { format } from 'date-format-parse';
 import { getValidDate } from '../util/date';
-import ListColumns from './list-columns';
-import ListOptions from './list-options';
+import ListColumns from './list-columns.vue';
+import ListOptions from './list-options.vue';
 import { getLocale } from '../locale';
 
 export default {
@@ -143,7 +148,7 @@ export default {
         use12h: /a/i.test(fmt),
       };
       const obj = {};
-      Object.keys(defaultProps).forEach(key => {
+      Object.keys(defaultProps).forEach((key) => {
         obj[key] = typeof this[key] === 'boolean' ? this[key] : defaultProps[key];
       });
       return obj;
